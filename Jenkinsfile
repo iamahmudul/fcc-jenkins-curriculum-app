@@ -2,12 +2,23 @@ pipeline {
   agent any
   stages {
     stage('Checkout Code') {
-      steps {
-        git(url: 'https://github.com/iamahmudul/fcc-jenkins-curriculum-app', branch: 'dev')
+      parallel {
+        stage('Checkout Code') {
+          steps {
+            git(url: 'https://github.com/iamahmudul/fcc-jenkins-curriculum-app', branch: 'dev')
+          }
+        }
+
+        stage('Parallel to Checkout Code') {
+          steps {
+            echo 'This step is running in parallel to Checkout Code'
+          }
+        }
+
       }
     }
 
-    stage('') {
+    stage('List Directory') {
       steps {
         sh 'ls -la'
       }
