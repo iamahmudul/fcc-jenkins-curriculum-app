@@ -18,7 +18,7 @@ pipeline {
       }
     }
 
-    stage('List Directory') {
+    stage('Log') {
       steps {
         sh 'ls -la'
       }
